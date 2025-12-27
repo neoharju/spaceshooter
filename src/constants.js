@@ -26,10 +26,10 @@ export const GAME = {
 
 export const POWER_LEVELS = {
   1: { minKills: 0, fireRate: 15, damage: 1 },
-  2: { minKills: 10, fireRate: 13, damage: 2 },
-  3: { minKills: 25, fireRate: 11, damage: 3 },
-  4: { minKills: 50, fireRate: 9, damage: 4 },
-  5: { minKills: 100, fireRate: 8, damage: 5 }
+  2: { minKills: 20, fireRate: 13, damage: 2 },
+  3: { minKills: 50, fireRate: 11, damage: 3 },
+  4: { minKills: 100, fireRate: 9, damage: 4 },
+  5: { minKills: 150, fireRate: 8, damage: 5 }
 };
 
 export const ENEMY = {
@@ -80,7 +80,7 @@ export const PARTICLE = {
 };
 
 export const LEVEL_PROGRESSION = {
-  BASE_KILLS_REQUIRED: 15,
+  BASE_KILLS_REQUIRED: 30,
   KILLS_INCREMENT: 5
 };
 
