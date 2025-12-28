@@ -59,7 +59,7 @@ export const ASTEROID = {
   MAX_SIZE: 50,
   BASE_SPEED: 1,
   MAX_SPEED_VARIANCE: 2,
-  ROTATION_SPEED: 0.01
+  ROTATION_SPEED: 0.02
 };
 
 export const BULLET = {
