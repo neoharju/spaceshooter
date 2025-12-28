@@ -11,7 +11,7 @@ COPY . .
 RUN npm run build
 
 
-FROM nginx:alpine
+FROM nginxinc/nginx-unprivileged:alpine-slim
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
@@ -24,6 +24,8 @@ RUN echo 'server { \
         try_files $uri $uri/ /index.html; \
     } \
 }' > /etc/nginx/conf.d/default.conf
+
+USER nginx
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
