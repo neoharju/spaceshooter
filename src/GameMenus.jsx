@@ -1,27 +1,35 @@
 import React from 'react';
+import { POWER_LEVELS, LEVEL_PROGRESSION } from './constants';
 
-export const MenuScreen = ({ onStart }) => (
-  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur">
-    <div className="text-center space-y-8">
-      <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-        STELLAR STRIKE
-      </h1>
-      <p className="text-gray-300 text-lg">Clear 5 levels and defeat the boss</p>
-      <div className="space-y-2 text-gray-400 text-sm">
-        <p>⌨️ WASD or Arrow Keys to move</p>
-        <p>🚀 SPACE to fire</p>
-        <p>⭐ 15+ kills per level to advance</p>
-        <p>⚡ Power up at 10, 25, 50, 100 kills</p>
+export const MenuScreen = ({ onStart }) => {
+  const powerUpKills = Object.values(POWER_LEVELS)
+    .map(level => level.minKills)
+    .filter(kills => kills > 0)
+    .join(', ');
+
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur">
+      <div className="text-center space-y-8">
+        <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+          STELLAR STRIKE
+        </h1>
+        <p className="text-gray-300 text-lg">Clear 5 levels and defeat the boss</p>
+        <div className="space-y-2 text-gray-400 text-sm">
+          <p>⌨️ WASD or Arrow Keys to move</p>
+          <p>🚀 SPACE to fire</p>
+          <p>⭐ {LEVEL_PROGRESSION.BASE_KILLS_REQUIRED}+ kills per level to advance</p>
+          <p>⚡ Power up at {powerUpKills} kills</p>
+        </div>
+        <button
+          onClick={onStart}
+          className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-xl font-bold rounded-lg hover:scale-110 transition-transform shadow-lg shadow-cyan-500/50"
+        >
+          START GAME
+        </button>
       </div>
-      <button
-        onClick={onStart}
-        className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-xl font-bold rounded-lg hover:scale-110 transition-transform shadow-lg shadow-cyan-500/50"
-      >
-        START GAME
-      </button>
     </div>
-  </div>
-);
+  );
+};
 
 export const LevelCompleteScreen = ({ level, score, kills, powerLevel, onNext }) => (
   <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur">
