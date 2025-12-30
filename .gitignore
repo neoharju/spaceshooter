@@ -25,3 +25,6 @@ lerna-debug.log*
 
 Dockerfile.dev
 docker-compose-dev.yaml
+
+*.backup
+
